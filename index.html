@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CY Admin — Church Youth Admin Panel</title>
+  <meta name="description" content="Church Youth Organization Admin Dashboard — Manage members, events, media, and more.">
+  <link rel="stylesheet" href="styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ════════ LOGIN PAGE ════════ -->
+<div id="loginPage" class="login-page">
+  <div class="login-card">
+    <div class="login-logo">✝</div>
+    <h2>CY Admin</h2>
+    <p class="login-sub">Church Youth Organization — Admin Portal</p>
+    <div id="phoneStep">
+      <div class="form-group" style="text-align:left">
+        <label class="form-label">Phone Number</label>
+        <div style="display:flex;gap:8px">
+          <input class="form-input" style="width:70px;text-align:center" value="+91" readonly>
+          <input class="form-input" id="phoneInput" placeholder="Enter your number" style="flex:1">
+        </div>
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;padding:12px" onclick="showOTP()">Send OTP</button>
+    </div>
+    <div id="otpStep" style="display:none">
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">Enter the 6-digit code sent to your phone</p>
+      <div class="otp-grid">
+        <input class="otp-box" maxlength="1" oninput="otpNext(this)">
+        <input class="otp-box" maxlength="1" oninput="otpNext(this)">
+        <input class="otp-box" maxlength="1" oninput="otpNext(this)">
+        <input class="otp-box" maxlength="1" oninput="otpNext(this)">
+        <input class="otp-box" maxlength="1" oninput="otpNext(this)">
+        <input class="otp-box" maxlength="1" oninput="otpNext(this)">
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;padding:12px" onclick="doLogin()">Verify & Login</button>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:16px">Didn't receive? <a href="#" style="color:var(--accent)" onclick="showOTP()">Resend OTP</a></p>
+    </div>
+    <p style="font-size:11px;color:var(--text-muted);margin-top:24px">Forgot access? Contact your Super Admin</p>
+  </div>
+</div>
+
+<!-- ════════ APP SHELL ════════ -->
+<div id="appShell" class="app-shell" style="display:none">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">✝</div>
+      <div><h1>CY Admin</h1><span>Church Youth Org</span></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-title">Main</div>
+        <a class="nav-item active" data-page="dashboard"><span class="icon">📊</span>Dashboard</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Management</div>
+        <a class="nav-item" data-page="members"><span class="icon">👥</span>Members<span class="badge">152</span></a>
+        <a class="nav-item" data-page="events"><span class="icon">📅</span>Events</a>
+        <a class="nav-item" data-page="media"><span class="icon">🖼️</span>Media</a>
+        <a class="nav-item" data-page="about"><span class="icon">ℹ️</span>About Us</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Communication</div>
+        <a class="nav-item" data-page="notifications"><span class="icon">🔔</span>Notifications</a>
+        <a class="nav-item" data-page="prayer"><span class="icon">🙏</span>Prayer Schedule</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Insights</div>
+        <a class="nav-item" data-page="analytics"><span class="icon">📈</span>Analytics</a>
+        <a class="nav-item" data-page="settings"><span class="icon">⚙️</span>Settings</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="avatar">SA</div>
+      <div class="user-info"><div class="user-name">Super Admin</div><div class="user-role">Full Access</div></div>
+      <span style="cursor:pointer;font-size:18px" title="Logout" onclick="doLogout()">🚪</span>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content" id="mainContent"></main>
+</div>
+
+<script src="pages/app.js"></script>
+<script src="pages/pages2.js"></script>
+<script src="pages/pages3.js"></script>
+</body>
+</html>
