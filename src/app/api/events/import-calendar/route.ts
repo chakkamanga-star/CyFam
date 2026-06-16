@@ -195,7 +195,8 @@ function parseEvents(json: string): ExtractedEvent[] {
 
 // ── Text extraction helpers ────────────────────────────────────
 async function extractTextFromPDF(buffer: Buffer): Promise<string> {
-  const pdfParse = (await import('pdf-parse')).default;
+  const pdfParseModule = await import('pdf-parse');
+  const pdfParse = (pdfParseModule as any).default || pdfParseModule;
   return (await pdfParse(buffer)).text;
 }
 
