@@ -21,31 +21,40 @@ type CYEvent = {
 const TYPE_COLOURS: Record<string, { bg: string; color: string; pill: string }> = {
   'Church Event':  { bg: 'rgba(99,102,241,0.18)',  color: '#818cf8', pill: 'rgba(99,102,241,0.14)' },
   'Birthday':      { bg: 'rgba(251,191,36,0.18)',  color: '#fbbf24', pill: 'rgba(251,191,36,0.14)' },
-  'Feast Day':     { bg: 'rgba(239,68,68,0.18)',   color: '#f87171', pill: 'rgba(239,68,68,0.14)'  },
+  'Feast Day':     { bg: 'rgba(244,63,94,0.15)',   color: '#fb7185', pill: 'rgba(244,63,94,0.12)'  },
   'Meeting':       { bg: 'rgba(148,163,184,0.15)', color: '#94a3b8', pill: 'rgba(148,163,184,0.10)'},
   'Special Event': { bg: 'rgba(167,139,250,0.18)', color: '#a78bfa', pill: 'rgba(167,139,250,0.14)'},
   'Team Event':    { bg: 'rgba(16,185,129,0.18)',  color: '#34d399', pill: 'rgba(16,185,129,0.14)' },
 };
 const tc = (type: string) => TYPE_COLOURS[type] ?? TYPE_COLOURS['Church Event'];
 
-// ── Banner Upload Modal ─────────────────────────────────────────
-function BannerModal({
-  events, day, onClose, onSaved,
+// ── Day Details & Banner Upload Modal ───────────────────────────
+function DayDetailsModal({
+  events, day, date, onClose, onSaved,
 }: {
   events: CYEvent[];
   day: number;
+  date: Date;
   onClose: () => void;
   onSaved: (updated: CYEvent) => void;
 }) {
-  const [selectedEvent, setSelectedEvent] = useState<CYEvent>(events[0]);
+  const [selectedEvent, setSelectedEvent] = useState<CYEvent | null>(events.length > 0 ? events[0] : null);
   const [preview, setPreview]   = useState<string | null>(null);
   const [file, setFile]         = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
+  const dateStr = format(date, 'yyyy-MM-dd');
+  const liturgy = getSyroMalabarLiturgy(dateStr);
+  const theme = liturgy ? getLiturgicalTheme('Syro-Malabar Rite', liturgy.season) : null;
+
   // Keep preview in sync with selected event's existing banner
   useEffect(() => {
-    setPreview(selectedEvent.banner_url);
+    if (selectedEvent) {
+      setPreview(selectedEvent.banner_url);
+    } else {
+      setPreview(null);
+    }
     setFile(null);
   }, [selectedEvent]);
 
@@ -56,6 +65,7 @@ function BannerModal({
 
   const handleSave = async () => {
     if (!file) { toast.error('Choose a banner image first'); return; }
+    if (!selectedEvent) return;
     setUploading(true);
     const fd = new FormData();
     fd.append('banner', file);
@@ -69,6 +79,7 @@ function BannerModal({
   };
 
   const handleRemoveBanner = async () => {
+    if (!selectedEvent) return;
     setUploading(true);
     const res  = await fetch(`/api/events/${selectedEvent.id}`, {
       method: 'PATCH',
@@ -83,7 +94,7 @@ function BannerModal({
     onSaved({ ...selectedEvent, banner_url: null });
   };
 
-  const colours = tc(selectedEvent.type);
+  const colours = selectedEvent ? tc(selectedEvent.type) : tc('Church Event');
 
   return (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.72)', backdropFilter: 'blur(12px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, padding: 20 }}>
@@ -93,17 +104,35 @@ function BannerModal({
         <div style={{ padding: '20px 24px 16px', borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: 3 }}>
-              {format(new Date(selectedEvent.event_date), 'EEEE, MMMM d')}
+              {format(date, 'EEEE, MMMM d, yyyy')}
             </div>
-            <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--text)' }}>Event Banner</h3>
+            <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--text)' }}>Day Details</h3>
           </div>
           <button onClick={onClose} style={{ width: 32, height: 32, borderRadius: 9, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--border)', background: 'transparent', cursor: 'pointer', color: 'var(--text-muted)' }}>
             <X size={15} />
           </button>
         </div>
 
+        {/* Liturgy & Feasts Section */}
+        {liturgy && (
+          <div style={{ padding: '16px 24px', borderBottom: '1px solid var(--border)', background: theme ? `${theme.color}05` : 'transparent' }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: theme?.color || 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              {liturgy.season} Season
+            </div>
+            {liturgy.feasts && liturgy.feasts.length > 0 && (
+              <div style={{ marginTop: 8, display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                {liturgy.feasts.map((f, i) => (
+                  <div key={i} style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 8, background: `${theme?.color}15`, color: theme?.color, display: 'flex', alignItems: 'center', gap: 5 }}>
+                    <Star size={12} /> {f}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Event selector (if multiple events on this day) */}
-        {events.length > 1 && (
+        {events.length > 1 && selectedEvent && (
           <div style={{ padding: '12px 24px', borderBottom: '1px solid var(--border)', display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             {events.map(ev => (
               <button key={ev.id} onClick={() => setSelectedEvent(ev)} style={{
@@ -117,68 +146,79 @@ function BannerModal({
         )}
 
         <div style={{ padding: '20px 24px' }}>
-          {/* Selected event info */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16, padding: '10px 14px', borderRadius: 12, background: colours.bg, border: `1px solid ${colours.color}30` }}>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 2 }}>{selectedEvent.title}</div>
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <span style={{ fontSize: 11.5, color: colours.color }}>{selectedEvent.type}</span>
-                {selectedEvent.location && (
-                  <span style={{ fontSize: 11.5, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 3 }}>
-                    <MapPin size={10} /> {selectedEvent.location}
-                  </span>
-                )}
-              </div>
-            </div>
-            <Link href={`/events/${selectedEvent.id}/edit`} style={{ color: 'var(--text-muted)', display: 'flex', alignItems: 'center' }}>
-              <ExternalLink size={14} />
-            </Link>
-          </div>
-
-          {/* Banner preview / upload zone */}
-          <div
-            onClick={() => fileRef.current?.click()}
-            style={{
-              width: '100%', height: 200, borderRadius: 14, overflow: 'hidden', cursor: 'pointer',
-              border: `2px dashed ${preview ? colours.color + '60' : 'var(--border)'}`,
-              background: preview ? 'transparent' : 'rgba(255,255,255,0.02)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              position: 'relative', transition: 'all 0.2s', marginBottom: 14,
-            }}
-          >
-            {preview ? (
-              <>
-                <img src={preview} alt="banner" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)', display: 'flex', alignItems: 'flex-end', padding: 12 }}>
-                  <span style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.8)', display: 'flex', alignItems: 'center', gap: 5 }}>
-                    <ImagePlus size={13} /> Click to change banner
-                  </span>
+          {selectedEvent ? (
+            <>
+              <h4 style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-sub)', marginBottom: 12, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Organization Event</h4>
+              {/* Selected event info */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16, padding: '10px 14px', borderRadius: 12, background: colours.bg, border: `1px solid ${colours.color}30` }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 2 }}>{selectedEvent.title}</div>
+                  <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: 11.5, color: colours.color }}>{selectedEvent.type}</span>
+                    {selectedEvent.location && (
+                      <span style={{ fontSize: 11.5, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 3 }}>
+                        <MapPin size={10} /> {selectedEvent.location}
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </>
-            ) : (
-              <div style={{ textAlign: 'center', padding: 24 }}>
-                <ImagePlus size={36} style={{ color: 'var(--text-muted)', margin: '0 auto 10px', display: 'block' }} />
-                <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 4 }}>Upload Event Banner</div>
-                <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Click to browse · JPG, PNG, WEBP</div>
+                <Link href={`/events/${selectedEvent.id}/edit`} style={{ color: 'var(--text-muted)', display: 'flex', alignItems: 'center' }}>
+                  <ExternalLink size={14} />
+                </Link>
               </div>
-            )}
-            <input ref={fileRef} type="file" accept="image/*" style={{ display: 'none' }}
-              onChange={e => { const f = e.target.files?.[0]; if (f) handleFile(f); }} />
-          </div>
 
-          {/* Actions */}
-          <div style={{ display: 'flex', gap: 10 }}>
-            {(selectedEvent.banner_url || file) && (
-              <button onClick={handleRemoveBanner} disabled={uploading}
-                style={{ padding: '10px 16px', borderRadius: 11, border: '1px solid rgba(239,68,68,0.3)', background: 'rgba(239,68,68,0.08)', color: '#f87171', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}>
-                <Trash2 size={13} /> Remove
-              </button>
-            )}
-            <button onClick={handleSave} disabled={!file || uploading} className="btn-primary-gradient"
-              style={{ flex: 1, justifyContent: 'center', padding: '10px', borderRadius: 11, fontSize: 14, opacity: !file || uploading ? 0.5 : 1 }}>
-              {uploading ? <><Loader2 size={14} className="animate-spin" /> Saving…</> : <><Upload size={14} /> Save Banner</>}
-            </button>
-          </div>
+              {/* Banner preview / upload zone */}
+              <div
+                onClick={() => fileRef.current?.click()}
+                style={{
+                  width: '100%', height: 200, borderRadius: 14, overflow: 'hidden', cursor: 'pointer',
+                  border: `2px dashed ${preview ? colours.color + '60' : 'var(--border)'}`,
+                  background: preview ? 'transparent' : 'rgba(255,255,255,0.02)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  position: 'relative', transition: 'all 0.2s', marginBottom: 14,
+                }}
+              >
+                {preview ? (
+                  <>
+                    <img src={preview} alt="banner" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)', display: 'flex', alignItems: 'flex-end', padding: 12 }}>
+                      <span style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.8)', display: 'flex', alignItems: 'center', gap: 5 }}>
+                        <ImagePlus size={13} /> Click to change banner
+                      </span>
+                    </div>
+                  </>
+                ) : (
+                  <div style={{ textAlign: 'center', padding: 24 }}>
+                    <ImagePlus size={36} style={{ color: 'var(--text-muted)', margin: '0 auto 10px', display: 'block' }} />
+                    <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 4 }}>Upload Event Banner</div>
+                    <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Click to browse · JPG, PNG, WEBP</div>
+                  </div>
+                )}
+                <input ref={fileRef} type="file" accept="image/*" style={{ display: 'none' }}
+                  onChange={e => { const f = e.target.files?.[0]; if (f) handleFile(f); }} />
+              </div>
+
+              {/* Actions */}
+              <div style={{ display: 'flex', gap: 10 }}>
+                {(selectedEvent.banner_url || file) && (
+                  <button onClick={handleRemoveBanner} disabled={uploading}
+                    style={{ padding: '10px 16px', borderRadius: 11, border: '1px solid rgba(239,68,68,0.3)', background: 'rgba(239,68,68,0.08)', color: '#f87171', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <Trash2 size={13} /> Remove
+                  </button>
+                )}
+                <button onClick={handleSave} disabled={!file || uploading} className="btn-primary-gradient"
+                  style={{ flex: 1, justifyContent: 'center', padding: '10px', borderRadius: 11, fontSize: 14, opacity: !file || uploading ? 0.5 : 1 }}>
+                  {uploading ? <><Loader2 size={14} className="animate-spin" /> Saving…</> : <><Upload size={14} /> Save Banner</>}
+                </button>
+              </div>
+            </>
+          ) : (
+            <div style={{ textAlign: 'center', padding: '40px 0', color: 'var(--text-muted)' }}>
+              <Calendar size={32} style={{ margin: '0 auto 12px', opacity: 0.5 }} />
+              <div style={{ fontSize: 14, fontWeight: 600 }}>No organization events</div>
+              <div style={{ fontSize: 12, marginTop: 4 }}>Only liturgical feasts today.</div>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -372,16 +412,16 @@ export default function Events() {
                 return (
                   <div
                     key={day}
-                    onClick={() => hasEvents && setModalDay(day)}
+                    onClick={() => setModalDay(day)}
                     style={{
                       minHeight: 88, borderRadius: 12, overflow: 'hidden', position: 'relative',
                       border: `1px solid ${isToday ? 'rgba(99,102,241,0.5)' : theme ? `${theme.color}20` : 'rgba(255,255,255,0.04)'}`,
                       background: isToday ? 'rgba(99,102,241,0.08)' : theme ? `${theme.color}08` : 'rgba(255,255,255,0.01)',
-                      cursor: hasEvents ? 'pointer' : 'default',
+                      cursor: 'pointer',
                       transition: 'all 0.15s',
                     }}
-                    onMouseEnter={e => { if (hasEvents) (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(99,102,241,0.4)'; }}
-                    onMouseLeave={e => { if (hasEvents) (e.currentTarget as HTMLDivElement).style.borderColor = isToday ? 'rgba(99,102,241,0.5)' : theme ? `${theme.color}20` : 'rgba(255,255,255,0.08)'; }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(99,102,241,0.4)'; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = isToday ? 'rgba(99,102,241,0.5)' : theme ? `${theme.color}20` : 'rgba(255,255,255,0.08)'; }}
                   >
                     {/* Banner background */}
                     {hasBanner && bannerUrl && (
@@ -467,11 +507,12 @@ export default function Events() {
         )}
       </div>
 
-      {/* ── Banner Modal ── */}
-      {modalDay !== null && modalEvents.length > 0 && (
-        <BannerModal
+      {/* ── Day Details Modal ── */}
+      {modalDay !== null && (
+        <DayDetailsModal
           events={modalEvents}
           day={modalDay}
+          date={new Date(calMonth.getFullYear(), calMonth.getMonth(), modalDay)}
           onClose={() => setModalDay(null)}
           onSaved={updated => {
             handleBannerSaved(updated);

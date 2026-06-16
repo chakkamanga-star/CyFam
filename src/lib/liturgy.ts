@@ -52,9 +52,9 @@ export function getLiturgicalTheme(rite: string, season?: string) {
         borderClass = 'border-amber-500/20';
         iconName = 'Sun';
       } else if (s.includes('apostles')) {
-        color = '#dc2626'; // Red
-        bgClass = 'bg-red-500/10';
-        borderClass = 'border-red-500/20';
+        color = '#e11d48'; // Rose
+        bgClass = 'bg-rose-500/10';
+        borderClass = 'border-rose-500/20';
         iconName = 'Users';
       } else if (s.includes('annunciation') || s.includes('nativity')) {
         color = '#0d9488'; // Teal

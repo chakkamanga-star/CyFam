@@ -31,7 +31,7 @@ const SEASON_STYLE: Record<string, { gradient: string; accent: string; bg: strin
   'Great Fast':   { gradient: 'linear-gradient(135deg,#7c3aed,#5b21b6)', accent: '#c4b5fd', bg: 'rgba(124,58,237,0.12)', icon: Flame },
   'Great Lent':   { gradient: 'linear-gradient(135deg,#7c3aed,#5b21b6)', accent: '#c4b5fd', bg: 'rgba(124,58,237,0.12)', icon: Flame },
   'Resurrection': { gradient: 'linear-gradient(135deg,#f59e0b,#d97706)', accent: '#fde68a', bg: 'rgba(245,158,11,0.12)', icon: Sun },
-  'Apostles':     { gradient: 'linear-gradient(135deg,#dc2626,#b91c1c)', accent: '#fca5a5', bg: 'rgba(220,38,38,0.12)', icon: Flame },
+  'Apostles':     { gradient: 'linear-gradient(135deg,#e11d48,#be123c)', accent: '#fb7185', bg: 'rgba(225,29,72,0.12)', icon: Flame },
   'Summer':       { gradient: 'linear-gradient(135deg,#0ea5e9,#0284c7)', accent: '#7dd3fc', bg: 'rgba(14,165,233,0.12)', icon: Snowflake },
   'Elijah-Cross-Moses': { gradient: 'linear-gradient(135deg,#16a34a,#15803d)', accent: '#86efac', bg: 'rgba(22,163,74,0.12)', icon: Plus },
   'Dedication of the Church': { gradient: 'linear-gradient(135deg,#ea580c,#c2410c)', accent: '#fdba74', bg: 'rgba(234,88,12,0.12)', icon: Crown },
