@@ -72,11 +72,18 @@ export async function requireAuth(
   if (!session) {
     return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
   }
-  if (allowedRoles && !allowedRoles.includes(session.role)) {
+  // 'App' role = mobile app service account — can read everything but is blocked
+  // from write-only routes (those specify allowedRoles explicitly)
+  if (allowedRoles && !allowedRoles.includes(session.role) && session.role !== 'App') {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+  }
+  // App role cannot use routes that require specific admin roles
+  if (session.role === 'App' && allowedRoles && !allowedRoles.includes('App')) {
+    return NextResponse.json({ error: 'Forbidden: read-only access' }, { status: 403 });
   }
   return session;
 }
+
 
 export function isNextResponse(val: unknown): val is NextResponse {
   return val instanceof NextResponse;
