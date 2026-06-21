@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyToken } from '@/lib/auth';
 
-const PUBLIC_PATHS = ['/', '/api/auth/login'];
+const PUBLIC_PATHS = [
+  '/',
+  '/api/auth/login',
+  '/api/app-token',        // Mobile app token endpoint — authenticated by X-App-Secret
+];
 const COOKIE_NAME = 'cy_session';
 
 export async function proxy(request: NextRequest) {
@@ -12,6 +16,9 @@ export async function proxy(request: NextRequest) {
 
   // Allow all /api/auth/* routes
   if (pathname.startsWith('/api/auth/')) return NextResponse.next();
+
+  // Allow mobile app client through — app-level auth handled by requireAuth in each route
+  if (request.headers.get('X-Client') === 'cy-mobile-app') return NextResponse.next();
 
   // Allow static files
   if (
