@@ -190,7 +190,28 @@
     "season": "Nativity",
     "liturgical_day": "First Saturday of Nativity",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 1:4-9",
+        "description": "He who makes us rich in Word and Wisdom"
+      },
+      {
+        "reference": "Lk 2:36-40",
+        "description": "Jesus who grew up in Wisdom and Age"
+      },
+      {
+        "reference": "Gen 12:1-4",
+        "description": "God calls Abraham"
+      },
+      {
+        "reference": "Isa 44:1-4",
+        "description": "I will bestow my grace upon your children"
+      },
+      {
+        "reference": "1 Pet 4:12-19",
+        "description": "Live according to God ’ s will"
+      }
+    ]
   },
   "2026-01-04": {
     "season": "Nativity",
@@ -241,7 +262,16 @@
     "season": "Denha",
     "liturgical_day": "First Wednesday of Denha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Tim 3:10-17",
+        "description": "One who lives in Christ will be persecuted"
+      },
+      {
+        "reference": "Lk 4:23-30",
+        "description": "Prophet is rejected in the homeland"
+      }
+    ]
   },
   "2026-01-08": {
     "season": "Denha",
@@ -262,7 +292,20 @@
     "feasts": [
       "(The   Qūdāšā   of   Mar   Nestorius)   is   used."
     ],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Sam 12:1-10",
+        "description": "That man is you"
+      },
+      {
+        "reference": "Jer 1:4-10;16-19",
+        "description": "To uproot and to smash"
+      },
+      {
+        "reference": "Acts 12:1-11",
+        "description": "The martyrdom of Jacob"
+      }
+    ]
   },
   "2026-01-10": {
     "season": "Denha",
@@ -353,7 +396,16 @@
     "season": "Denha",
     "liturgical_day": "Second Thursday of Denha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 6:12-20",
+        "description": "The glory of man"
+      },
+      {
+        "reference": "Jn 2:13-25",
+        "description": "Cleansing of the Temple"
+      }
+    ]
   },
   "2026-01-16": {
     "season": "Denha",
@@ -432,13 +484,39 @@
     "season": "Denha",
     "liturgical_day": "Third Monday of Denha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 2:1-7",
+        "description": "Proclaimer of the wisdom of God"
+      },
+      {
+        "reference": "Mk 6:7-13",
+        "description": "The Mission of the twelve"
+      }
+    ]
   },
   "2026-01-20": {
     "season": "Denha",
     "liturgical_day": "Third Tuesday of Denha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 2:12-17",
+        "description": "Fragrance of the knowledge of Messeah"
+      },
+      {
+        "reference": "Deut 32:37-43",
+        "description": "There is no God besides me"
+      },
+      {
+        "reference": "Is 49:1-4",
+        "description": "My property is God"
+      },
+      {
+        "reference": "2 Tim 2:1-5",
+        "description": "Join with Jesus Christ in suffering,"
+      }
+    ]
   },
   "2026-01-21": {
     "season": "Denha",
@@ -558,7 +636,24 @@
     "season": "Denha",
     "liturgical_day": "Fourth Tuesday of Denha (Tuesday -Three Days Fast)",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Chr 6:24-30",
+        "description": "Come to the Temple and confess your sins"
+      },
+      {
+        "reference": "Bar 1:15-22",
+        "description": "Confessing of the sins"
+      },
+      {
+        "reference": "Jas 5:13-20",
+        "description": "Confess your sins"
+      },
+      {
+        "reference": "Jn 1:29-34",
+        "description": "Lamb of God who takes away the sins"
+      }
+    ]
   },
   "2026-01-28": {
     "season": "Denha",
@@ -818,7 +913,48 @@
     "feasts": [
       "(The   Qūdāšā   of   Mar   Nestorius)   is   used."
     ],
-    "readings": []
+    "readings": [
+      {
+        "reference": "Wis 7:22-30",
+        "description": "The glory of Wisdom"
+      },
+      {
+        "reference": "1 Cor 1:18-29",
+        "description": "To those who are called, Christ,"
+      },
+      {
+        "reference": "Jn 12:20-26",
+        "description": "The Greeks search for Jesus"
+      },
+      {
+        "reference": "Prov 4:1-13",
+        "description": "Earning of wisdom is desirable"
+      },
+      {
+        "reference": "Dan 2:14-23",
+        "description": "God gives wisdom and strength"
+      },
+      {
+        "reference": "2 Cor 4:1-6",
+        "description": "Knowledge of the glory of God"
+      },
+      {
+        "reference": "Ex 4:10-17",
+        "description": "Aaron ’ s appointment"
+      },
+      {
+        "reference": "Isa 49:6-10",
+        "description": "You have been given to the people as a covenant"
+      },
+      {
+        "reference": "2 Cor 6:1-13",
+        "description": "The co-workers of Christ"
+      },
+      {
+        "reference": "Jn 15:1-8",
+        "description": "Abide in me just as the branch abides in the vine ."
+      }
+    ]
   },
   "2026-02-07": {
     "season": "Denha",
@@ -1041,7 +1177,20 @@
     "season": "Great Fast",
     "liturgical_day": "First   Tuesday of the Great Fast",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "Neh 8:17-9",
+        "description": ":3 People confess their sins"
+      },
+      {
+        "reference": "Acts 8:14-25",
+        "description": "Divine gift is through repentance and prayer"
+      },
+      {
+        "reference": "Mk 9:14-29",
+        "description": "Importance of prayer and fasting"
+      }
+    ]
   },
   "2026-02-18": {
     "season": "Great Fast",
@@ -1114,7 +1263,16 @@
     "season": "Great Fast",
     "liturgical_day": "First Saturday of the Great Fast",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 2:5-11",
+        "description": "Forgiveness to the sinner"
+      },
+      {
+        "reference": "Lk 15:11-24",
+        "description": "The parable of the prodigal son"
+      }
+    ]
   },
   "2026-02-22": {
     "season": "Great Fast",
@@ -1175,7 +1333,28 @@
     "season": "Great Fast",
     "liturgical_day": "Second Wednesday of the Great Fast",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Tim 6:17-21",
+        "description": "The foolish greed for money"
+      },
+      {
+        "reference": "Lk 12:13-21",
+        "description": "The pseudo security of the rich"
+      },
+      {
+        "reference": "Gen 22:1-13",
+        "description": "The sacrifice of Abraham"
+      },
+      {
+        "reference": "2 Macc 7:1-11",
+        "description": "The mother and her seven sons"
+      },
+      {
+        "reference": "2 Cor 4:7-15",
+        "description": "Suffer for Jesus"
+      }
+    ]
   },
   "2026-02-26": {
     "season": "Great Fast",
@@ -1376,13 +1555,31 @@
     "season": "Great Fast",
     "liturgical_day": "Third Tuesday of the Great Fast",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 9:1-5",
+        "description": "Generous donation without pressure"
+      },
+      {
+        "reference": "Mk 12:38-44",
+        "description": "Widow ’ s coins"
+      }
+    ]
   },
   "2026-03-04": {
     "season": "Great Fast",
     "liturgical_day": "Third Wednesday of the Great Fast",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 9:6-10",
+        "description": "He who sows abundantly"
+      },
+      {
+        "reference": "Lk 6:32-38",
+        "description": "Give, and it will be given to you"
+      }
+    ]
   },
   "2026-03-05": {
     "season": "Great Fast",
@@ -1420,7 +1617,16 @@
     "season": "Great Fast",
     "liturgical_day": "Third Saturday of the Great Fast",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 6:14-7",
+        "description": ":1 Temple of God ."
+      },
+      {
+        "reference": "Lk 8:42",
+        "description": "b-48 The bleeding woman recovers ."
+      }
+    ]
   },
   "2026-03-08": {
     "season": "Great Fast",
@@ -1428,7 +1634,20 @@
     "feasts": [
       "Gen 19:1-7, 10-11 The sin of Sodom"
     ],
-    "readings": []
+    "readings": [
+      {
+        "reference": "Gen 19:1-7,10-11",
+        "description": "The sin of Sodom"
+      },
+      {
+        "reference": "2 Sam 12:1-7;13-17",
+        "description": "The repentance of David"
+      },
+      {
+        "reference": "2 Tim 2:22-26",
+        "description": "Call on the Lord with a holy heart"
+      }
+    ]
   },
   "2026-03-09": {
     "season": "Great Fast",
@@ -1470,7 +1689,20 @@
     "season": "Great Fast",
     "liturgical_day": "Fourth Wednesday of the Great Fast   Mid Lent",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "Job 22:23-30",
+        "description": "You will be saved because of the"
+      },
+      {
+        "reference": "Rev 3:1-6",
+        "description": "Those who are with white garments"
+      },
+      {
+        "reference": "Mk 10:46-52",
+        "description": "He threw the outer garment away"
+      }
+    ]
   },
   "2026-03-12": {
     "season": "Great Fast",
@@ -1557,7 +1789,12 @@
     "season": "Great Fast",
     "liturgical_day": "Fifth Tuesday of the Great Fast",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Pet 3:8-12",
+        "description": "Do not repay evil for evil,"
+      }
+    ]
   },
   "2026-03-18": {
     "season": "Great Fast",
@@ -1577,7 +1814,24 @@
     "season": "Great Fast",
     "liturgical_day": "Fifth Thursday of the Great Fast",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 13:1-8,12-13",
+        "description": "Love forgives"
+      },
+      {
+        "reference": "Is 41:8-16",
+        "description": "Jacob, I have chosen you"
+      },
+      {
+        "reference": "Acts 19:11-20",
+        "description": "(19: 8-20) God did extraordinary"
+      },
+      {
+        "reference": "2 Cor 10:3-11",
+        "description": "(10: 3-18) The spiritual weapons"
+      }
+    ]
   },
   "2026-03-20": {
     "season": "Great Fast",
@@ -1606,7 +1860,12 @@
     "season": "Great Fast",
     "liturgical_day": "Fifth Saturday of the Great Fast",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 2:1-8",
+        "description": "They would not have crucified the Lord of glory"
+      }
+    ]
   },
   "2026-03-22": {
     "season": "Great Fast",
@@ -1628,7 +1887,12 @@
       "Cardinal   Padiyara   (2000).",
       "Patron’s   day   of   Mar   Vijay   Anand   Nedumpuram."
     ],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Pet 2:18-23",
+        "description": "When you do right and suffer,"
+      }
+    ]
   },
   "2026-03-24": {
     "season": "Great Fast",
@@ -1683,19 +1947,50 @@
     "season": "Great Fast",
     "liturgical_day": "Sixth Thursday of the Great Fast",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Tim 1:6-14",
+        "description": "Endure the hardships for the sake of the Gospel"
+      },
+      {
+        "reference": "Mk 10:32-34",
+        "description": "The Third Prophecy: Suffering and Resurrection"
+      }
+    ]
   },
   "2026-03-27": {
     "season": "Great Fast",
     "liturgical_day": "Sixth Friday of the Great Fast ( 40 th Friday )",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "Acts 9:36-42",
+        "description": "Peter raises Tabitha"
+      },
+      {
+        "reference": "Rom 5:12-17",
+        "description": "Life through Jesus Christ"
+      },
+      {
+        "reference": "Jn 11:32-44",
+        "description": "Jesus raises Lazarus"
+      }
+    ]
   },
   "2026-03-28": {
     "season": "Great Fast",
     "liturgical_day": "Sixth Saturday of the Great Fast",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 2:14-17",
+        "description": "We are the fragrance of Christ"
+      },
+      {
+        "reference": "Jn 12:1-11",
+        "description": "Anointing at Bethany"
+      }
+    ]
   },
   "2026-03-29": {
     "season": "Great Fast",
@@ -1719,7 +2014,20 @@
       "Palm Sunday until the end of the Season of the",
       "Dedication   of   the   Church."
     ],
-    "readings": []
+    "readings": [
+      {
+        "reference": "Lam 2:1-7",
+        "description": "God cuts down the might of Israel"
+      },
+      {
+        "reference": "Rom 11:17-24",
+        "description": "The lesson from the olive tree"
+      },
+      {
+        "reference": "Lk 19:41-48",
+        "description": "Prophecy on the destruction of Jerusalem"
+      }
+    ]
   },
   "2026-03-31": {
     "season": "Great Fast",
@@ -1911,7 +2219,24 @@
     "season": "Resurrection",
     "liturgical_day": "First Tuesday of Resurrection",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Chr 22:7-13",
+        "description": "Peace and tranquillity at His time"
+      },
+      {
+        "reference": "Zech 8:11-17",
+        "description": "I will sow peace"
+      },
+      {
+        "reference": "Col 1:15-22",
+        "description": "Peace through the sufferings and death of Christ"
+      },
+      {
+        "reference": "Jn 14:25-31",
+        "description": "I give you peace"
+      }
+    ]
   },
   "2026-04-08": {
     "season": "Resurrection",
@@ -1987,7 +2312,16 @@
     "season": "Resurrection",
     "liturgical_day": "First Saturday of Resurrection",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 3:4-11",
+        "description": "Ministers of the New Testament"
+      },
+      {
+        "reference": "Lk 24:44-48",
+        "description": "You are witnesses to these things"
+      }
+    ]
   },
   "2026-04-12": {
     "season": "Resurrection",
@@ -2146,7 +2480,16 @@
     "season": "Resurrection",
     "liturgical_day": "Third Tuesday of Resurrection",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Tim 1:18-19;2",
+        "description": ":1-7 We must pray for everyone"
+      },
+      {
+        "reference": "Lk 22:24-32",
+        "description": "Strengthen your brothers"
+      }
+    ]
   },
   "2026-04-22": {
     "season": "Resurrection",
@@ -2182,7 +2525,24 @@
     "season": "Resurrection",
     "liturgical_day": "Third Friday of Resurrection",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Tim 2:22-26",
+        "description": "The servant of the Lord should not be"
+      },
+      {
+        "reference": "Dan 6:12-25",
+        "description": "Dan iel in the lions’ den"
+      },
+      {
+        "reference": "Acts 12:1-5",
+        "description": "(1 2:1-23) Martyrdom of St. James"
+      },
+      {
+        "reference": "2 Cor 12:1-10",
+        "description": "(12: 1-14) Be content with hardships and"
+      }
+    ]
   },
   "2026-04-25": {
     "season": "Resurrection",
@@ -2235,7 +2595,16 @@
     "season": "Resurrection",
     "liturgical_day": "Fourth Tuesday of Resurrection",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 3:18-23",
+        "description": "You belong to Christ"
+      },
+      {
+        "reference": "Mk 3:13-19",
+        "description": "The call to be with Christ"
+      }
+    ]
   },
   "2026-04-29": {
     "season": "Resurrection",
@@ -2427,7 +2796,12 @@
     "season": "Resurrection",
     "liturgical_day": "Fifth Monday of Resurrection",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "Lk 9:1-6",
+        "description": "Take no staff nor bag nor bread nor money"
+      }
+    ]
   },
   "2026-05-05": {
     "season": "Resurrection",
@@ -2473,13 +2847,27 @@
     "season": "Resurrection",
     "liturgical_day": "Fifth   Thursday of Resurrection",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 15:1-11",
+        "description": "What I am is by the grace of God"
+      },
+      {
+        "reference": "Lk 9:57-62",
+        "description": "Those who are called to proclaim the"
+      }
+    ]
   },
   "2026-05-08": {
     "season": "Resurrection",
     "liturgical_day": "Fifth   Friday of Resurrection",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 3:1-9",
+        "description": "The mission of the Apostle and his colleagues"
+      }
+    ]
   },
   "2026-05-09": {
     "season": "Resurrection",
@@ -2638,7 +3026,16 @@
     "season": "Resurrection",
     "liturgical_day": "Seventh Monday of Resurrection",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Tim 2:1-7",
+        "description": "Pray for all"
+      },
+      {
+        "reference": "Lk 18:1-8",
+        "description": "Pray unceasingly"
+      }
+    ]
   },
   "2026-05-19": {
     "season": "Resurrection",
@@ -2706,7 +3103,16 @@
     "season": "Resurrection",
     "liturgical_day": "Seventh Saturday of Resurrection",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 1:17-22",
+        "description": "Jesus Christ has given us His Spirit"
+      },
+      {
+        "reference": "Lk 11:5-13",
+        "description": "The Holy Spirit will be given to those who ask"
+      }
+    ]
   },
   "2026-05-24": {
     "season": "Apostles",
@@ -2753,7 +3159,16 @@
     "season": "Apostles",
     "liturgical_day": "First Tuesday of the Apostles",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 12:4-11,28-31",
+        "description": "There are diversities of gifts,"
+      },
+      {
+        "reference": "Lk 19:11-27",
+        "description": "Increase the talents"
+      }
+    ]
   },
   "2026-05-27": {
     "season": "Apostles",
@@ -3008,7 +3423,16 @@
     "season": "Apostles",
     "liturgical_day": "Second Saturday of the Apostles",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 3:1-6",
+        "description": "You are our recommendation letter,"
+      },
+      {
+        "reference": "Jn 10:31-42",
+        "description": "I do the works of my Father"
+      }
+    ]
   },
   "2026-06-07": {
     "season": "Apostles",
@@ -3207,7 +3631,16 @@
     "season": "Apostles",
     "liturgical_day": "Fourth Monday of the Apostles",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Tim 3:10-17",
+        "description": "Sacred Scripture perfects man"
+      },
+      {
+        "reference": "Mk 4:10-20",
+        "description": "Explanation of the parable of the sower"
+      }
+    ]
   },
   "2026-06-16": {
     "season": "Apostles",
@@ -3232,7 +3665,16 @@
       "Jn 14: 21-24 The word that you hear is from the",
       "Father who sent me"
     ],
-    "readings": []
+    "readings": [
+      {
+        "reference": "Eph 6:10-20",
+        "description": "Apostle, the ambassador of the"
+      },
+      {
+        "reference": "Jn 14:21-24",
+        "description": "The word that you hear is from the"
+      }
+    ]
   },
   "2026-06-18": {
     "season": "Apostles",
@@ -3300,7 +3742,20 @@
     "season": "Apostles",
     "liturgical_day": "Fifth Monday of Apostles",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Pet 2:18-25",
+        "description": "Endure hardships wholeheartedly"
+      },
+      {
+        "reference": "Jn 15:18-27",
+        "description": "The world will also persecute the disciples"
+      },
+      {
+        "reference": "1 Pet 4:12-19",
+        "description": "Suffer with Christ"
+      }
+    ]
   },
   "2026-06-23": {
     "season": "Apostles",
@@ -3319,13 +3774,47 @@
     "season": "Apostles",
     "liturgical_day": "Fifth Wednesday of Apostles",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Pet 3:13-19",
+        "description": "Christ died for us"
+      },
+      {
+        "reference": "Jn 12:20-28",
+        "description": "Grain of wheat should fall into"
+      },
+      {
+        "reference": "2 Sam 12:1-10",
+        "description": "Nathan condemns David."
+      },
+      {
+        "reference": "Jer 1:4-10,16-19",
+        "description": "Before I formed you in the"
+      },
+      {
+        "reference": "Gal 4:1-7",
+        "description": "You are no longer a slave but a son."
+      },
+      {
+        "reference": "Lk 1:57-66",
+        "description": "The birth of John the Baptist."
+      }
+    ]
   },
   "2026-06-25": {
     "season": "Apostles",
     "liturgical_day": "F ifth Thursday of Apostles",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 10:1-6",
+        "description": "Paul ’ s bold argument"
+      },
+      {
+        "reference": "Lk 13:31-35",
+        "description": "Carry out the mission with courage"
+      }
+    ]
   },
   "2026-06-26": {
     "season": "Apostles",
@@ -3578,7 +4067,24 @@
     "feasts": [
       "Num 11:16-18, 24-30 Seventy leaders receive the Spirit"
     ],
-    "readings": []
+    "readings": [
+      {
+        "reference": "Num 11:16-18,24-30",
+        "description": "Seventy leaders receive the Spirit"
+      },
+      {
+        "reference": "1 Sam 16:14-23",
+        "description": "Saul lost the Spirit of God"
+      },
+      {
+        "reference": "Gal 5:16-26",
+        "description": "The fruits of the Spirit"
+      },
+      {
+        "reference": "Jn 14:15-20,25-26",
+        "description": "The helper sent by the Father"
+      }
+    ]
   },
   "2026-07-06": {
     "season": "Apostles",
@@ -3614,7 +4120,16 @@
     "season": "Apostles",
     "liturgical_day": "Seventh   Wednesday of the Apostles",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 12:1-11",
+        "description": "The Holy Spirit empowers us to say"
+      },
+      {
+        "reference": "Mk 3:20-30",
+        "description": "Blasphemy against the spirit of God"
+      }
+    ]
   },
   "2026-07-09": {
     "season": "Apostles",
@@ -3746,7 +4261,28 @@
     "season": "Summer",
     "liturgical_day": "First Wednesday of Kaitha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Tim 4:12-16",
+        "description": "Be an example to believers"
+      },
+      {
+        "reference": "Lk 12:41-48",
+        "description": "Loyal steward"
+      },
+      {
+        "reference": "Dan 3:25-45",
+        "description": "Praising the Lord from furnace."
+      },
+      {
+        "reference": "Acts 6:8-15",
+        "description": "(6:8-7:10) Martyrdom of Saint Stephen."
+      },
+      {
+        "reference": "Heb 11:3-10",
+        "description": "(11:3-10, 32-40 + 12:1-2)"
+      }
+    ]
   },
   "2026-07-16": {
     "season": "Summer",
@@ -3844,7 +4380,12 @@
     "season": "Summer",
     "liturgical_day": "Second Tuesday of Kaitha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Pet 3:8-13",
+        "description": "The Lord is waiting patiently for us"
+      }
+    ]
   },
   "2026-07-22": {
     "season": "Summer",
@@ -3965,7 +4506,28 @@
     "season": "Summer",
     "liturgical_day": "Third Tuesday of Kaitha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 7:1-7",
+        "description": "The Christian marriage"
+      },
+      {
+        "reference": "Deut 28:8-12",
+        "description": "Israel, God ’ s portion"
+      },
+      {
+        "reference": "Isa 53:10-12",
+        "description": "Suffering leads to the   Kingdom of God"
+      },
+      {
+        "reference": "Gal 2:19-21",
+        "description": "Be crucified with Christ"
+      },
+      {
+        "reference": "Jn 12:20-26",
+        "description": "Be like the grain of wheat that falls"
+      }
+    ]
   },
   "2026-07-29": {
     "season": "Summer",
@@ -3993,7 +4555,12 @@
     "season": "Summer",
     "liturgical_day": "Third Thursday of Kaitha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Tim 6:1-6",
+        "description": "Mutual respect"
+      }
+    ]
   },
   "2026-07-31": {
     "season": "Summer",
@@ -4168,7 +4735,28 @@
     "season": "Summer",
     "liturgical_day": "Fourth Tuesday of Kaitha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 1:10-17",
+        "description": "Spread the Gospel without making divisions"
+      },
+      {
+        "reference": "Jn 3:22-30",
+        "description": "He should grow and I should decrease"
+      },
+      {
+        "reference": "1 Sam 21:1-6",
+        "description": "Priest gives holy bread to David"
+      },
+      {
+        "reference": "Ezek 36:22-27",
+        "description": "God who purifies us from sin"
+      },
+      {
+        "reference": "2 Cor 1:3-7",
+        "description": "Partaking in the suffering of Jesus"
+      }
+    ]
   },
   "2026-08-05": {
     "season": "Summer",
@@ -4445,7 +5033,16 @@
     "season": "Summer",
     "liturgical_day": "Sixth Thursday of Kaitha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 3:12-18",
+        "description": "Where the spirit of the Lord is, there is freedom"
+      },
+      {
+        "reference": "Jn 8:31-38",
+        "description": "The truth will set you free"
+      }
+    ]
   },
   "2026-08-21": {
     "season": "Summer",
@@ -4468,7 +5065,12 @@
     "season": "Summer",
     "liturgical_day": "Sixth Saturday of Kaitha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 12:12-27",
+        "description": "You are the body of"
+      }
+    ]
   },
   "2026-08-23": {
     "season": "Summer",
@@ -4499,13 +5101,47 @@
     "season": "Summer",
     "liturgical_day": "The Seventh Monday of Kaitha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 9:24-27",
+        "description": "Run to get the prize"
+      },
+      {
+        "reference": "Mk 12:28-34",
+        "description": "The Golden rule of the Kingdom of God"
+      },
+      {
+        "reference": "Deut 18:15-19",
+        "description": "A prophet like Moses"
+      },
+      {
+        "reference": "Isa 22:15-22",
+        "description": "A warning to Shebana who did evil"
+      },
+      {
+        "reference": "1 Cor 12:27-31",
+        "description": "We are the Body of Christ"
+      },
+      {
+        "reference": "Lk 6:12-19",
+        "description": "Jesus chooses the apostles"
+      }
+    ]
   },
   "2026-08-25": {
     "season": "Summer",
     "liturgical_day": "The Seventh Tuesday of Kaitha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Pet 1:1-11",
+        "description": "Strive for the entry into the eternal kingdom"
+      },
+      {
+        "reference": "Lk 12:13-21",
+        "description": "The rich fool"
+      }
+    ]
   },
   "2026-08-26": {
     "season": "Summer",
@@ -4524,13 +5160,39 @@
     "season": "Summer",
     "liturgical_day": "The Seventh Thursday of Kaitha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 6:1-11",
+        "description": "Those who act unjustly"
+      },
+      {
+        "reference": "Lk 6:27-36",
+        "description": "Your reward will be great ."
+      }
+    ]
   },
   "2026-08-28": {
     "season": "Summer",
     "liturgical_day": "The Seventh Friday of Kaitha",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 9:6-15",
+        "description": "Blessings through charity"
+      },
+      {
+        "reference": "Deut 10:12-17",
+        "description": "Love God with your whole heart"
+      },
+      {
+        "reference": "Wis 7:10-14",
+        "description": "Love   wisdom"
+      },
+      {
+        "reference": "2 Cor 5:14-21",
+        "description": "Reconcile with God"
+      }
+    ]
   },
   "2026-08-29": {
     "season": "Summer",
@@ -4585,7 +5247,16 @@
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "First Monday of Elijah",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 2:9-15",
+        "description": "The mysterious and hidden Wisdom of God"
+      },
+      {
+        "reference": "Lk 23:33-43",
+        "description": "Remember me when you are in your kingdom"
+      }
+    ]
   },
   "2026-09-01": {
     "season": "Elijah-Cross-Moses",
@@ -4706,13 +5377,31 @@
     "feasts": [
       "First Friday"
     ],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 15:12-22",
+        "description": "Resurrection of the dead through Jesus"
+      },
+      {
+        "reference": "Jn 11:17-27",
+        "description": "I am the resurrection and the life"
+      }
+    ]
   },
   "2026-09-05": {
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "First Saturday of Elijah",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 15:50-58",
+        "description": "Body and blood cannot claim"
+      },
+      {
+        "reference": "Jas 2:14-17",
+        "description": "Faith without action is dead"
+      }
+    ]
   },
   "2026-09-06": {
     "season": "Elijah-Cross-Moses",
@@ -4822,7 +5511,12 @@
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "Second Friday of Elijah",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Tim 3:1-9",
+        "description": "The last days are a time of trouble ."
+      }
+    ]
   },
   "2026-09-12": {
     "season": "Elijah-Cross-Moses",
@@ -4914,13 +5608,31 @@
       "Episcopal   Ordination   of   Mar   Joseph   Kollamparambil",
       "(C.M.I)   (2013)."
     ],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Tim 4:1-11",
+        "description": "Be the best minister of Jesus Christ ."
+      },
+      {
+        "reference": "Mk 13:32-37",
+        "description": "Always be vigilant ."
+      }
+    ]
   },
   "2026-09-18": {
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "Third Friday of Elijah",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Pet 5:5-11",
+        "description": "Stay awake with patience ."
+      },
+      {
+        "reference": "Lk 22:39-46",
+        "description": "Stay awake and pray not to be tempted ."
+      }
+    ]
   },
   "2026-09-19": {
     "season": "Elijah-Cross-Moses",
@@ -4970,7 +5682,28 @@
       "Mar   Mathew   Vaniakizhakel,",
       "Mar   Mathew   Arackal   and   Mar   Mathew   Nellikunnel."
     ],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 10:1-6",
+        "description": "Our weapons of war are not physical ."
+      },
+      {
+        "reference": "Lk 18:31-34",
+        "description": "Suffering and resurrection, the third prophecy ."
+      },
+      {
+        "reference": "1 Chr 29:10-19",
+        "description": "Blessed be God forever"
+      },
+      {
+        "reference": "Ezek 1:1-14",
+        "description": "The vision of Ezekiel"
+      },
+      {
+        "reference": "Heb 11:23-26",
+        "description": "Suffer for Christ ’ s sake"
+      }
+    ]
   },
   "2026-09-22": {
     "season": "Elijah-Cross-Moses",
@@ -5079,7 +5812,12 @@
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "Second Monday of Cross",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 10:1-13",
+        "description": "One who is standing should be"
+      }
+    ]
   },
   "2026-09-29": {
     "season": "Elijah-Cross-Moses",
@@ -5321,7 +6059,24 @@
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "Second Saturday of Cross",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Pet 3:10-13",
+        "description": "New heaven and new earth ."
+      },
+      {
+        "reference": "Deut 15:7-11",
+        "description": "Help the poor."
+      },
+      {
+        "reference": "Is 6:1-7",
+        "description": "Isaiah’s revelation."
+      },
+      {
+        "reference": "Gal 6:14-17",
+        "description": "Crucified to the world for Christ."
+      }
+    ]
   },
   "2026-10-04": {
     "season": "Elijah-Cross-Moses",
@@ -5435,7 +6190,16 @@
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "Third Saturday of Cross",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 3:12-18",
+        "description": "The transfiguration of those"
+      },
+      {
+        "reference": "Jn 17:20-26",
+        "description": "Believers also should see my glory ."
+      }
+    ]
   },
   "2026-10-11": {
     "season": "Elijah-Cross-Moses",
@@ -5466,7 +6230,16 @@
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "First Monday of Moses",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 15:29-34",
+        "description": "The dead will be resurrected"
+      },
+      {
+        "reference": "Jn 5:24-29",
+        "description": "The time is approaching when the dead"
+      }
+    ]
   },
   "2026-10-13": {
     "season": "Elijah-Cross-Moses",
@@ -5502,7 +6275,28 @@
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "First Thursday of Moses",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Pet 1:13-21",
+        "description": "Be holy"
+      },
+      {
+        "reference": "Deut 11:13-17",
+        "description": "Abide by the laws of the Lord."
+      },
+      {
+        "reference": "Is 61:10-11",
+        "description": "I rejoice in the Lord."
+      },
+      {
+        "reference": "Col 2:20-3",
+        "description": ":4 I will be raised with Christ."
+      },
+      {
+        "reference": "Jn 14:18-24",
+        "description": "Love and unity with God."
+      }
+    ]
   },
   "2026-10-16": {
     "season": "Elijah-Cross-Moses",
@@ -5530,7 +6324,48 @@
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "First Saturday of Moses",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Pet 3:14-18",
+        "description": "The patience of our Lord is for our salvation"
+      },
+      {
+        "reference": "Lk 14:15-24",
+        "description": "The parable of the great banquet"
+      },
+      {
+        "reference": "2 Sam 22:31-35",
+        "description": "The Lord is the shield of those"
+      },
+      {
+        "reference": "Wis 3:1-6",
+        "description": "The soul of the righteous is in God’s hands."
+      },
+      {
+        "reference": "Rom 8:35-39",
+        "description": "Nothing should separate us from the"
+      },
+      {
+        "reference": "Jn 12:20-26",
+        "description": "Fall and die as a grain of wheat."
+      },
+      {
+        "reference": "Tob 12:6-15",
+        "description": "Acknowledge and reveal the deeds of God."
+      },
+      {
+        "reference": "Sir 38:1-9",
+        "description": "Doctor and healing."
+      },
+      {
+        "reference": "Col 4:10-15",
+        "description": "(4:10-15 + 2 Cor 8:16-24)"
+      },
+      {
+        "reference": "Lk 10:1-9",
+        "description": "Seventy disciples are sent."
+      }
+    ]
   },
   "2026-10-18": {
     "season": "Elijah-Cross-Moses",
@@ -5703,13 +6538,43 @@
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "Third Tuesday of Moses",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 11:12-15",
+        "description": "False apostles and hypocrites"
+      }
+    ]
   },
   "2026-10-28": {
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "Third Wednesday of Moses",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Pet 2:1-10",
+        "description": "Punishment for the false preachers"
+      },
+      {
+        "reference": "Mk 13:1-8;21-23",
+        "description": "Many will come in my name"
+      },
+      {
+        "reference": "Ex 15:11-13",
+        "description": "The Lord, glorified   in holiness"
+      },
+      {
+        "reference": "Wis 10:15-21",
+        "description": "Wisdom will open the mouth of the dumb"
+      },
+      {
+        "reference": "Eph 6:10-17",
+        "description": "Gird your loins with truth and stand firm"
+      },
+      {
+        "reference": "Jn 15:18-25",
+        "description": "Jesus has chosen us"
+      }
+    ]
   },
   "2026-10-29": {
     "season": "Elijah-Cross-Moses",
@@ -5730,13 +6595,31 @@
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "Third Friday of Moses",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 12:14-15;19-21",
+        "description": "Apostle’s fear of the unrepentant"
+      },
+      {
+        "reference": "Lk 11:45-54",
+        "description": "Woe to the Pharisees and Lawyers"
+      }
+    ]
   },
   "2026-10-31": {
     "season": "Elijah-Cross-Moses",
     "liturgical_day": "Third Saturday of Moses",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 3:10-17",
+        "description": "The day to be tested by fire"
+      },
+      {
+        "reference": "1 Jn 3:1-3",
+        "description": "When Christ appears we shall see Him"
+      }
+    ]
   },
   "2026-11-01": {
     "season": "Dedication of the Church",
@@ -5869,13 +6752,31 @@
     "season": "Dedication of the Church",
     "liturgical_day": "First Tuesday of Dedication of the Church",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 5:1-5",
+        "description": "We want to live in a heavenly home"
+      },
+      {
+        "reference": "Lk 15:11-24",
+        "description": "The son returning to the father ’ s house"
+      }
+    ]
   },
   "2026-11-04": {
     "season": "Dedication of the Church",
     "liturgical_day": "First Wednesday of Dedication of the Church",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Pet 5:1-4",
+        "description": "He who keeps the flock of God will"
+      },
+      {
+        "reference": "Jn 21:15-19",
+        "description": "Shepherd the flock of God"
+      }
+    ]
   },
   "2026-11-05": {
     "season": "Dedication of the Church",
@@ -5970,7 +6871,16 @@
     "season": "Dedication of the Church",
     "liturgical_day": "Second Tuesday of Dedication of the Church",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Pet 1:12-21",
+        "description": "The prophets and apostles are witnesses"
+      },
+      {
+        "reference": "Lk 9:28-36",
+        "description": "Transfiguration of Jesus"
+      }
+    ]
   },
   "2026-11-11": {
     "season": "Dedication of the Church",
@@ -5991,13 +6901,31 @@
     "season": "Dedication of the Church",
     "liturgical_day": "Second Thursday of Dedication of the Church",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 11:1-4",
+        "description": "I have betrothed you to Christ"
+      },
+      {
+        "reference": "Jn 3:22-30",
+        "description": "The bridegroom is the one who has the bride"
+      }
+    ]
   },
   "2026-11-13": {
     "season": "Dedication of the Church",
     "liturgical_day": "Second Friday of Dedication of the Church",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 12:1-5",
+        "description": "The heavenly vision of the Apostle"
+      },
+      {
+        "reference": "Jn 3:31-36",
+        "description": "The heavenly one speaks of heavenly things"
+      }
+    ]
   },
   "2026-11-14": {
     "season": "Dedication of the Church",
@@ -6041,19 +6969,46 @@
     "feasts": [
       "Syro-Malabar   Hierarchy   was   instituted   (1924)."
     ],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 13:1-10",
+        "description": "Excellent gifts"
+      },
+      {
+        "reference": "Mk 12:28-34",
+        "description": "The most important commandment"
+      }
+    ]
   },
   "2026-11-17": {
     "season": "Dedication of the Church",
     "liturgical_day": "Third Tuesday of Dedication of the Church",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 4:1-5",
+        "description": "Stewards must be faithful"
+      },
+      {
+        "reference": "Lk 16:1-13",
+        "description": "Must be faithful in all things"
+      }
+    ]
   },
   "2026-11-18": {
     "season": "Dedication of the Church",
     "liturgical_day": "Third Wednesday of Dedication of the Church",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 6:1-11",
+        "description": "The wicked will not inherit the"
+      },
+      {
+        "reference": "Lk 16:13-17",
+        "description": "Entering the Kingdom of God needs force"
+      }
+    ]
   },
   "2026-11-19": {
     "season": "Dedication of the Church",
@@ -6089,7 +7044,40 @@
     "season": "Dedication of the Church",
     "liturgical_day": "Third Saturday of Dedication of the Church",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Tim 4:1-8",
+        "description": "I have finished my race"
+      },
+      {
+        "reference": "Jn 17:1-8",
+        "description": "I have completed the work you entrusted to me"
+      },
+      {
+        "reference": "Ex 6:6-13",
+        "description": "The Lord calls and sends Moses."
+      },
+      {
+        "reference": "Is 41:8-16",
+        "description": "Do not fear, I will help you."
+      },
+      {
+        "reference": "Eph 2:14-22",
+        "description": "Access to the Father is through Christ."
+      },
+      {
+        "reference": "Jn 14:1-14",
+        "description": "Jesus is the Way,   Life   and   Truth"
+      },
+      {
+        "reference": "Rom 8:26-30",
+        "description": "Everything for good for those who are called"
+      },
+      {
+        "reference": "Lk 1:46-55",
+        "description": "Mary’s song of praise."
+      }
+    ]
   },
   "2026-11-22": {
     "season": "Dedication of the Church",
@@ -6123,7 +7111,16 @@
     "season": "Dedication of the Church",
     "liturgical_day": "Fourth Tuesday of Dedication of the Church",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Pet 2:1-10",
+        "description": "You are a people, a holy people"
+      },
+      {
+        "reference": "Jn 10:7-16",
+        "description": "One flock and one shepherd"
+      }
+    ]
   },
   "2026-11-25": {
     "season": "Dedication of the Church",
@@ -6859,7 +7856,28 @@
     "season": "Annunciation",
     "liturgical_day": "First Thursday of Annunciation",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Tim 4:11-16",
+        "description": "Be a model in holiness"
+      },
+      {
+        "reference": "Deut 26:16-19",
+        "description": "You are a holy people"
+      },
+      {
+        "reference": "Isa 45:20-24",
+        "description": "There is no God besides me"
+      },
+      {
+        "reference": "2 Cor 6:3-10",
+        "description": "We are God ’ s servants"
+      },
+      {
+        "reference": "Mk 6:7-13",
+        "description": "Jesus sends out His disciples"
+      }
+    ]
   },
   "2026-12-04": {
     "season": "Annunciation",
@@ -6990,13 +8008,31 @@
       "Rom 12: 9-18 Love one another with mutual affection",
       "Lk 1: 39-45 Mary visits Elizabeth"
     ],
-    "readings": []
+    "readings": [
+      {
+        "reference": "Rom 12:9-18",
+        "description": "Love one another with mutual affection"
+      },
+      {
+        "reference": "Lk 1:39-45",
+        "description": "Mary visits Elizabeth"
+      }
+    ]
   },
   "2026-12-11": {
     "season": "Annunciation",
     "liturgical_day": "Second Friday of Annunciation",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 8:11-15",
+        "description": "Do works of charity"
+      },
+      {
+        "reference": "Lk 1:46-56",
+        "description": "Mary ’ s Magnificat"
+      }
+    ]
   },
   "2026-12-12": {
     "season": "Annunciation",
@@ -7038,7 +8074,24 @@
     "season": "Annunciation",
     "liturgical_day": "Third Monday of Annunciation",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "1 Cor 5:1-8",
+        "description": "Abandon immorality"
+      },
+      {
+        "reference": "Lk 6:43-45",
+        "description": "Be a tree which produces good fruits"
+      },
+      {
+        "reference": "1 Cor 2:1-10",
+        "description": "The true wisdom of God"
+      },
+      {
+        "reference": "Lk 14:25-33",
+        "description": "The cost of   discipleship"
+      }
+    ]
   },
   "2026-12-15": {
     "season": "Annunciation",
@@ -7295,7 +8348,16 @@
     "season": "Nativity",
     "liturgical_day": "First Tuesday of Nativity",
     "feasts": [],
-    "readings": []
+    "readings": [
+      {
+        "reference": "2 Cor 1:18-22",
+        "description": "Christ is our foundation."
+      },
+      {
+        "reference": "Jn 13:31",
+        "description": "b-35 Love is the sign of Christ’s disciple."
+      }
+    ]
   },
   "2026-12-30": {
     "season": "Nativity",
