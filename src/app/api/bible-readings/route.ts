@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireAuth, isNextResponse } from '@/lib/auth';
 import { getSyroMalabarLiturgy, getLiturgicalTheme } from '@/lib/liturgy';
 
+const MOBILE_SECRET = 'cyfam-mobile-2026';
+
 // ── In-memory cache (resets on server restart, good enough for a day) ──
 const cache: Record<string, { data: unknown; ts: number }> = {};
 const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
@@ -316,30 +318,70 @@ async function getFallbackReadings(dateStr: string, rite: 'latin' | 'syro-malaba
 
 // ── GET /api/bible-readings?rite=latin&date=2026-06-15 ─────────
 export async function GET(req: NextRequest) {
-  const auth = await requireAuth(req);
-  if (isNextResponse(auth)) return auth;
+  // Allow mobile app without session auth
+  const isMobile =
+    req.headers.get('x-client') === 'cy-mobile-app' &&
+    req.headers.get('x-app-secret') === MOBILE_SECRET;
+
+  if (!isMobile) {
+    const auth = await requireAuth(req);
+    if (isNextResponse(auth)) return auth;
+  }
 
   const { searchParams } = req.nextUrl;
-  const rite = (searchParams.get('rite') || 'latin') as 'latin' | 'syro-malabar';
+  const rite = (searchParams.get('rite') || 'syro-malabar') as 'latin' | 'syro-malabar';
   const date = searchParams.get('date') || new Date().toISOString().split('T')[0];
 
   const cacheKey = `${rite}:${date}`;
   const cached = getCache(cacheKey);
-  if (cached) return NextResponse.json(cached);
+  if (cached) return NextResponse.json({ data: cached });
 
   try {
-    let data: DailyReadings;
+    let raw: DailyReadings;
     if (rite === 'syro-malabar') {
-      data = await fetchSyroMalabarReadings(date);
+      raw = await fetchSyroMalabarReadings(date);
     } else {
-      data = await fetchLatinReadings(date);
+      raw = await fetchLatinReadings(date);
     }
-    setCache(cacheKey, data);
-    return NextResponse.json(data);
+    setCache(cacheKey, raw);
+
+    // Normalise to snake_case for mobile + web consistency
+    const data = {
+      rite:            raw.rite,
+      date:            raw.date,
+      liturgical_day:  raw.liturgicalDay,
+      season:          raw.season,
+      colour:          raw.colour,
+      feasts:          raw.feasts ?? [],
+      readings:        (raw.readings ?? []).map(r => ({
+        label:       r.label,
+        reference:   r.reference,
+        description: r.text,   // mobile reads 'description'
+        text:        r.text,
+      })),
+      source:          raw.source,
+      source_url:      raw.sourceUrl,
+    };
+
+    return NextResponse.json({ data });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
-    // Return fallback readings on error
     const fallback = await getFallbackReadings(date, rite);
-    return NextResponse.json({ ...fallback, error: msg });
+    const data = {
+      rite:           fallback.rite,
+      date:           fallback.date,
+      liturgical_day: fallback.liturgicalDay,
+      season:         fallback.season,
+      colour:         fallback.colour,
+      feasts:         [],
+      readings:       (fallback.readings ?? []).map(r => ({
+        label:       r.label,
+        reference:   r.reference,
+        description: r.text,
+        text:        r.text,
+      })),
+      source:         fallback.source,
+    };
+    return NextResponse.json({ data, warning: msg });
   }
 }
