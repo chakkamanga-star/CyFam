@@ -169,10 +169,11 @@ function extractReference(title: string): string {
 // ── Syro-Malabar: Use Local Data First, Then AI ──────────────────
 async function fetchSyroMalabarReadings(dateStr: string): Promise<DailyReadings> {
   const localData = getSyroMalabarLiturgy(dateStr);
-  
-  if (localData) {
+
+  // Only use local data if it actually has readings defined
+  if (localData && localData.readings.length > 0) {
     const readings: Reading[] = await Promise.all(localData.readings.map(async (r, i) => {
-      let text = await fetchBibleText(r.reference);
+      const text = await fetchBibleText(r.reference);
       let label = `Reading ${i + 1}`;
       if (localData.readings.length === 4) {
         if (i === 0) label = 'First Reading (Law/Prophets)';
@@ -203,12 +204,27 @@ async function fetchSyroMalabarReadings(dateStr: string): Promise<DailyReadings>
     };
   }
 
-  // AI Fallback if date is not in local data
+  // If local data has no readings (empty array), we still know the liturgical context —
+  // use it to give AI a better prompt, then fall through to AI for the actual readings.
+  const liturgicalContext = localData
+    ? `Today is "${localData.liturgical_day}" in the ${localData.season} season.`
+    : '';
+
+  // AI Fallback — used when local readings are empty or date not in local data
   const apiKey = process.env.GITHUB_MODELS_TOKEN || process.env.GEMINI_API_KEY;
-  if (!apiKey) throw new Error('No AI key configured');
+  if (!apiKey) {
+    // No AI — return fallback readings with local liturgical context where available
+    const fallback = await getFallbackReadings(dateStr, 'syro-malabar');
+    if (localData) {
+      fallback.liturgicalDay = localData.liturgical_day;
+      fallback.season        = localData.season;
+      fallback.feasts        = localData.feasts;
+    }
+    return fallback;
+  }
 
   const prompt = `You are an expert in the Syro-Malabar Catholic Church liturgical calendar.
-Today's date is ${dateStr}.
+Today's date is ${dateStr}. ${liturgicalContext}
 
 Provide the daily Mass readings for the Syro-Malabar rite for ${dateStr}.
 
@@ -332,7 +348,7 @@ export async function GET(req: NextRequest) {
   const rite = (searchParams.get('rite') || 'syro-malabar') as 'latin' | 'syro-malabar';
   const date = searchParams.get('date') || new Date().toISOString().split('T')[0];
 
-  const cacheKey = `${rite}:${date}`;
+  const cacheKey = `v2:${rite}:${date}`; // v2 — busts old non-normalized cache
   const cached = getCache(cacheKey);
   if (cached) return NextResponse.json({ data: cached });
 
@@ -343,9 +359,8 @@ export async function GET(req: NextRequest) {
     } else {
       raw = await fetchLatinReadings(date);
     }
-    setCache(cacheKey, raw);
 
-    // Normalise to snake_case for mobile + web consistency
+    // Normalise to snake_case and store the NORMALISED version in cache
     const data = {
       rite:            raw.rite,
       date:            raw.date,
@@ -356,13 +371,13 @@ export async function GET(req: NextRequest) {
       readings:        (raw.readings ?? []).map(r => ({
         label:       r.label,
         reference:   r.reference,
-        description: r.text,   // mobile reads 'description'
+        description: r.text,
         text:        r.text,
       })),
       source:          raw.source,
       source_url:      raw.sourceUrl,
     };
-
+    setCache(cacheKey, data); // store normalized
     return NextResponse.json({ data });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
