@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireAuth, isNextResponse } from '@/lib/auth';
 import { getSyroMalabarLiturgy, getLiturgicalTheme } from '@/lib/liturgy';
 
-const MOBILE_SECRET = 'cyfam-mobile-2026';
+const MOBILE_SECRET = process.env.MOBILE_APP_SECRET || 'cyfam-mobile-2026';
 
 // ── In-memory cache (resets on server restart, good enough for a day) ──
 const cache: Record<string, { data: unknown; ts: number }> = {};
