@@ -33,7 +33,7 @@ export function getLiturgicalTheme(rite: string, season?: string) {
     let bgClass = 'bg-amber-500/10';
     let borderClass = 'border-amber-500/20';
     let iconName = 'Sunrise'; // default icon
-    
+
     if (season) {
       const s = season.toLowerCase();
       if (s.includes('denha')) {
@@ -52,7 +52,7 @@ export function getLiturgicalTheme(rite: string, season?: string) {
         borderClass = 'border-amber-500/20';
         iconName = 'Sun';
       } else if (s.includes('apostles')) {
-        color = '#e11d48'; // Rose
+        color = '#1de144ff'; // Rose
         bgClass = 'bg-rose-500/10';
         borderClass = 'border-rose-500/20';
         iconName = 'Users';
