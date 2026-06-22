@@ -68,6 +68,30 @@ export async function requireAuth(
   req: NextRequest,
   allowedRoles?: string[]
 ): Promise<SessionPayload | NextResponse> {
+
+  // ── Mobile app shortcut ─────────────────────────────────────────
+  // If the request comes from the CY mobile app with the correct secret,
+  // grant App-level read access directly — no JWT needed.
+  // This makes the app robust even if the token-fetch flow fails.
+  const mobileSecret = process.env.MOBILE_APP_SECRET;
+  if (
+    req.headers.get('x-client') === 'cy-mobile-app' &&
+    mobileSecret &&
+    req.headers.get('x-app-secret') === mobileSecret
+  ) {
+    if (allowedRoles && !allowedRoles.includes('App')) {
+      return NextResponse.json({ error: 'Forbidden: read-only access' }, { status: 403 });
+    }
+    return {
+      id: 'mobile-app-service',
+      name: 'CY Mobile App',
+      phone: 'app-service',
+      role: 'App',
+      team_id: null,
+    };
+  }
+
+  // ── Normal JWT / cookie auth ────────────────────────────────────
   const session = await getSessionFromRequest(req);
   if (!session) {
     return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
@@ -83,7 +107,6 @@ export async function requireAuth(
   }
   return session;
 }
-
 
 export function isNextResponse(val: unknown): val is NextResponse {
   return val instanceof NextResponse;
