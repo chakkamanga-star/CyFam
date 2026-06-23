@@ -91,31 +91,35 @@ const QUICK_LINKS = [
 ];
 
 export default function Dashboard() {
-  const [stats, setStats] = useState<Stats | null>(null);
-  const [liturgy, setLiturgy] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  const [stats, setStats]             = useState<Stats | null>(null);
+  const [syroLiturgy, setSyroLiturgy] = useState<any>(null);
+  const [latinLiturgy, setLatinLiturgy] = useState<any>(null);
+  const [loading, setLoading]         = useState(true);
+
+  // Helper: unwrap & normalize a raw bible-readings API response
+  function normaliseLiturgy(l: any) {
+    if (!l || l.error) return null;
+    const raw = l.data ?? l;
+    if (!raw || !raw.season) return null;
+    return {
+      liturgicalDay: raw.liturgical_day ?? raw.liturgicalDay ?? '',
+      season:        raw.season ?? '',
+      colour:        raw.colour ?? '#10b981',
+      feasts:        raw.feasts ?? [],
+      source:        raw.source ?? '',
+      sourceUrl:     raw.source_url ?? raw.sourceUrl,
+    };
+  }
 
   useEffect(() => {
     Promise.all([
       fetch('/api/analytics/summary').then(r => r.json()),
-      fetch('/api/bible-readings?rite=syro-malabar').then(r => r.json()).catch(() => null)
-    ]).then(([s, l]) => {
+      fetch('/api/bible-readings?rite=syro-malabar').then(r => r.json()).catch(() => null),
+      fetch('/api/bible-readings?rite=latin').then(r => r.json()).catch(() => null),
+    ]).then(([s, syro, latin]) => {
       setStats(s);
-      // API returns { data: { liturgical_day, colour, season, feasts, ... } }
-      // Unwrap and normalize to camelCase for the banner
-      if (l && !l.error) {
-        const raw = l.data ?? l;
-        setLiturgy({
-          liturgicalDay: raw.liturgical_day ?? raw.liturgicalDay ?? '',
-          season:        raw.season ?? '',
-          colour:        raw.colour ?? '#10b981',
-          feasts:        raw.feasts ?? [],
-          source:        raw.source ?? '',
-          sourceUrl:     raw.source_url ?? raw.sourceUrl,
-        });
-      } else {
-        setLiturgy(null);
-      }
+      setSyroLiturgy(normaliseLiturgy(syro));
+      setLatinLiturgy(normaliseLiturgy(latin));
     }).catch(console.error).finally(() => setLoading(false));
   }, []);
 
@@ -184,37 +188,76 @@ export default function Dashboard() {
           })}
         </div>
 
-        {/* ── Today's Liturgy Banner ── */}
-        {!loading && liturgy && (
-          <div className="glass-card fade-up" style={{ marginBottom: 16, overflow: 'hidden', position: 'relative', border: `1px solid ${liturgy.colour}40`, animationDelay: '100ms' }}>
-            <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 4, background: liturgy.colour }} />
-            <div style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                <div style={{ width: 48, height: 48, borderRadius: 12, background: `${liturgy.colour}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: `1px solid ${liturgy.colour}30` }}>
-                   {React.createElement(getLiturgyIcon(liturgy.season?.includes('Denha') ? 'Droplet' : liturgy.season?.includes('Fast') ? 'Flame' : liturgy.season?.includes('Resurrection') ? 'Sun' : liturgy.season?.includes('Annunciation') ? 'Star' : 'Sunrise'), { size: 24, color: liturgy.colour, strokeWidth: 1.5 })}
-                </div>
-                <div>
-                  <div style={{ fontSize: 11.5, fontWeight: 700, color: liturgy.colour, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: 2 }}>
-                    {liturgy.season} Season
-                  </div>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: '#eef2ff', marginBottom: 2 }}>
-                    {liturgy.liturgicalDay}
-                  </div>
-                  {liturgy.feasts && liturgy.feasts.length > 0 && (
-                    <div style={{ fontSize: 12, color: '#8892b0', display: 'flex', alignItems: 'center', gap: 6 }}>
-                      <Star size={12} style={{ color: '#fbbf24' }} />
-                      {liturgy.feasts.join(', ')}
+        {/* ── Today's Liturgy — two rite cards ── */}
+        {!loading && (syroLiturgy || latinLiturgy) && (
+          <div style={{ display: 'grid', gridTemplateColumns: syroLiturgy && latinLiturgy ? '1fr 1fr' : '1fr', gap: 12, marginBottom: 16 }}>
+
+            {/* Syro-Malabar card */}
+            {syroLiturgy && (() => {
+              const lc = syroLiturgy.colour || '#fb923c';
+              const iconName = syroLiturgy.season?.includes('Denha') ? 'Droplet' : syroLiturgy.season?.includes('Fast') ? 'Flame' : syroLiturgy.season?.includes('Resurrection') ? 'Sun' : syroLiturgy.season?.includes('Annunciation') ? 'Star' : 'Sunrise';
+              return (
+                <div className="glass-card fade-up" style={{ overflow: 'hidden', position: 'relative', border: `1px solid ${lc}40`, animationDelay: '100ms' }}>
+                  <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 4, background: lc }} />
+                  <div style={{ padding: '14px 16px 14px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+                      <div style={{ width: 42, height: 42, borderRadius: 11, background: `${lc}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: `1px solid ${lc}30` }}>
+                        {React.createElement(getLiturgyIcon(iconName), { size: 20, color: lc, strokeWidth: 1.5 })}
+                      </div>
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ fontSize: 10, fontWeight: 700, color: lc, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: 1 }}>Syro-Malabar Rite</div>
+                        <div style={{ fontSize: 9.5, fontWeight: 600, color: `${lc}cc`, marginBottom: 3 }}>{syroLiturgy.season} Season</div>
+                        <div style={{ fontSize: 13.5, fontWeight: 700, color: '#eef2ff', lineHeight: 1.25, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{syroLiturgy.liturgicalDay}</div>
+                        {syroLiturgy.feasts?.length > 0 && (
+                          <div style={{ fontSize: 11, color: '#8892b0', display: 'flex', alignItems: 'center', gap: 4, marginTop: 2 }}>
+                            <Star size={10} style={{ color: '#fbbf24', flexShrink: 0 }} />
+                            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{syroLiturgy.feasts.join(', ')}</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  )}
+                    <Link href="/bible-readings" style={{ padding: '6px 12px', borderRadius: 99, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', fontSize: 11, fontWeight: 600, color: '#eef2ff', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}
+                      onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.09)'; }}
+                      onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.05)'; }}
+                    >Read →</Link>
+                  </div>
                 </div>
-              </div>
-              <Link href="/bible-readings" style={{ padding: '8px 16px', borderRadius: 99, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', fontSize: 12, fontWeight: 600, color: '#eef2ff', textDecoration: 'none', transition: 'background 0.2s' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.08)'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.05)'; }}
-              >
-                Today's Readings
-              </Link>
-            </div>
+              );
+            })()}
+
+            {/* Latin / Roman card */}
+            {latinLiturgy && (() => {
+              const lc = latinLiturgy.colour || '#818cf8';
+              const iconName = latinLiturgy.season?.includes('Advent') ? 'Star' : latinLiturgy.season?.includes('Lent') ? 'Cross' : latinLiturgy.season?.includes('Easter') ? 'Sun' : latinLiturgy.season?.includes('Christmas') ? 'Star' : 'Sunrise';
+              return (
+                <div className="glass-card fade-up" style={{ overflow: 'hidden', position: 'relative', border: `1px solid ${lc}40`, animationDelay: '160ms' }}>
+                  <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 4, background: lc }} />
+                  <div style={{ padding: '14px 16px 14px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+                      <div style={{ width: 42, height: 42, borderRadius: 11, background: `${lc}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: `1px solid ${lc}30` }}>
+                        {React.createElement(getLiturgyIcon(iconName), { size: 20, color: lc, strokeWidth: 1.5 })}
+                      </div>
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ fontSize: 10, fontWeight: 700, color: lc, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: 1 }}>Latin / Roman Rite</div>
+                        <div style={{ fontSize: 9.5, fontWeight: 600, color: `${lc}cc`, marginBottom: 3 }}>{latinLiturgy.season} Season</div>
+                        <div style={{ fontSize: 13.5, fontWeight: 700, color: '#eef2ff', lineHeight: 1.25, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{latinLiturgy.liturgicalDay}</div>
+                        {latinLiturgy.feasts?.length > 0 && (
+                          <div style={{ fontSize: 11, color: '#8892b0', display: 'flex', alignItems: 'center', gap: 4, marginTop: 2 }}>
+                            <Star size={10} style={{ color: '#fbbf24', flexShrink: 0 }} />
+                            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{latinLiturgy.feasts.join(', ')}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <Link href="/bible-readings" style={{ padding: '6px 12px', borderRadius: 99, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', fontSize: 11, fontWeight: 600, color: '#eef2ff', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}
+                      onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.09)'; }}
+                      onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.05)'; }}
+                    >Read →</Link>
+                  </div>
+                </div>
+              );
+            })()}
+
           </div>
         )}
 
