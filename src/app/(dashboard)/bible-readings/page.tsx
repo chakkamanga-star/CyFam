@@ -14,7 +14,7 @@ import {
 type Reading = { label: string; reference: string; text: string };
 type DailyReadings = {
   rite: string; date: string; liturgicalDay: string; season: string;
-  colour: string; readings: Reading[]; feasts?: string[]; source: string; sourceUrl?: string; error?: string;
+  colour: string; readings: Reading[]; feasts?: string[]; source: string; sourceUrl?: string; error?: string; warning?: string;
 };
 
 // ── Colour themes for liturgical seasons ────────────────────────
@@ -262,9 +262,28 @@ export default function BibleReadingsPage() {
     try {
       const res  = await fetch(`/api/bible-readings?rite=${rite}&date=${dateStr}`);
       const json = await res.json();
-      setData(json);
+      // API returns { data: { liturgical_day, source_url, ... }, warning? }
+      // Normalize snake_case → camelCase for the page
+      const raw = json.data ?? json;
+      const normalized: DailyReadings = {
+        rite:         raw.rite,
+        date:         raw.date,
+        liturgicalDay: raw.liturgical_day ?? raw.liturgicalDay ?? '',
+        season:       raw.season ?? '',
+        colour:       raw.colour ?? 'green',
+        readings:     (raw.readings ?? []).map((r: { label: string; reference: string; text?: string; description?: string }) => ({
+          label:     r.label,
+          reference: r.reference,
+          text:      r.text ?? r.description ?? '',
+        })),
+        feasts:    raw.feasts,
+        source:    raw.source ?? '',
+        sourceUrl: raw.source_url ?? raw.sourceUrl,
+        warning:   json.warning,
+      };
+      setData(normalized);
       setLoadTime(Date.now() - t0);
-      setExpanded(new Set(json.readings?.map((r: Reading) => r.label) ?? []));
+      setExpanded(new Set(normalized.readings.map((r: Reading) => r.label)));
     } catch {
       setData(null);
     } finally {
@@ -430,12 +449,12 @@ export default function BibleReadingsPage() {
               )}
             </div>
 
-            {/* Error banner */}
-            {data.error && (
+            {/* Error/Warning banner */}
+            {(data.error || data.warning) && (
               <div style={{ marginBottom: 16, padding: '12px 16px', borderRadius: 12, background: 'rgba(251,191,36,0.10)', border: '1px solid rgba(251,191,36,0.3)', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
                 <AlertCircle size={16} style={{ color: '#fbbf24', flexShrink: 0, marginTop: 1 }} />
                 <div style={{ fontSize: 12.5, color: 'var(--text-sub)' }}>
-                  Showing fallback readings. Error: <em style={{ color: '#fbbf24' }}>{data.error}</em>
+                  Showing fallback readings. {data.error || data.warning}
                 </div>
               </div>
             )}
