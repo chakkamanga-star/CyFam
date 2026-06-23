@@ -101,7 +101,21 @@ export default function Dashboard() {
       fetch('/api/bible-readings?rite=syro-malabar').then(r => r.json()).catch(() => null)
     ]).then(([s, l]) => {
       setStats(s);
-      setLiturgy(l && !l.error ? l : null);
+      // API returns { data: { liturgical_day, colour, season, feasts, ... } }
+      // Unwrap and normalize to camelCase for the banner
+      if (l && !l.error) {
+        const raw = l.data ?? l;
+        setLiturgy({
+          liturgicalDay: raw.liturgical_day ?? raw.liturgicalDay ?? '',
+          season:        raw.season ?? '',
+          colour:        raw.colour ?? '#10b981',
+          feasts:        raw.feasts ?? [],
+          source:        raw.source ?? '',
+          sourceUrl:     raw.source_url ?? raw.sourceUrl,
+        });
+      } else {
+        setLiturgy(null);
+      }
     }).catch(console.error).finally(() => setLoading(false));
   }, []);
 
